@@ -1,0 +1,550 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    background-color: #f5f7fa;
+    color: #1a1f36;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.1), 0 1px 2px rgba(16, 24, 40, 0.06);
+}
+
+h1 {
+    text-align: center;
+    color: #005643;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 2.25rem;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    text-align: center;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+}
+
+.progress-container {
+    margin-bottom: 2.5rem;
+}
+
+.day-counter {
+    text-align: center;
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: #111827;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background-color: #f3f4f6;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+#progressFill {
+    width: 0%;
+    height: 100%;
+    background-color: #005643;
+    transition: width 0.3s ease;
+}
+
+.habit-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding: 1rem;
+    background-color: #f9fafb;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s ease;
+}
+
+.habit-item:hover {
+    background-color: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+.habit-item input[type="checkbox"] {
+    margin-right: 1rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    accent-color: #005643;
+}
+
+.habit-item label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #111827;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: #005643;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: #004535;
+    transform: translateY(-1px);
+}
+
+.stats {
+    text-align: center;
+    font-size: 1rem;
+    color: #4b5563;
+    font-weight: 500;
+}
+
+.stats p {
+    margin-bottom: 0.5rem;
+}
+
+.habit-grid-container {
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.habit-grid-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #111827;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.habit-grid {
+    display: flex;
+    align-items: flex-start;
+    overflow-x: auto;
+    padding: 1.5rem 0;
+}
+
+.grid-labels {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    padding-top: 25px;
+    gap: 5px;
+    margin-top: -23px;
+    min-width: 80px;
+}
+
+.grid-labels .label {
+    height: 25px;
+    line-height: 25px;
+    color: #4b5563;
+    font-weight: 500;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+.grid-squares {
+    display: flex;
+    gap: 1px;
+}
+
+.day-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+}
+
+.day-number {
+    position: absolute;
+    top: -20px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.square {
+    width: 25px;
+    height: 25px;
+    background-color: #f3f4f6;
+    border: 1px solid #fff;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+}
+
+.square.completed {
+    background-color: #005643;
+}
+
+.day-column:hover .square {
+    border-color: #1a237e;
+}
+
+.habit-grid-container {
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.habit-grid-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #111827;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.habit-grid {
+    display: flex;
+    align-items: flex-start;
+    overflow-x: auto;
+    padding: 1.5rem 0;
+}
+
+.grid-labels {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    padding-top: 25px;
+    gap: 5px;
+    margin-top: -23px;
+    min-width: 80px;
+}
+
+.grid-labels .label {
+    color: #4b5563;
+    font-weight: 500;
+    font-size: 0.875rem;
+    white-space: nowrap;
+}
+
+.grid-squares {
+    display: flex;
+    gap: 1px;
+}
+
+.day-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+}
+
+.day-number {
+    position: absolute;
+    top: -20px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.square {
+    width: 25px;
+    height: 25px;
+    background-color: #f3f4f6;
+    border: 1px solid #fff;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+}
+
+.square.completed {
+    background-color: #005643;
+}
+
+.day-column:hover .square {
+    border-color: #1a237e;
+}
+
+.subtitle {
+    text-align: center;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+}
+
+.kindness-input {
+    margin: -0.5rem 0 1rem 2.5rem;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.kindness-input.visible {
+    display: block;
+    opacity: 1;
+}
+
+.kindness-input input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: #111827;
+    background-color: #f9fafb;
+}
+
+.kindness-input input:focus {
+    outline: none;
+    border-color: #005643;
+    background-color: white;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 80%;
+    max-width: 600px;
+    max-height: 70vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #6b7280;
+}
+
+.close:hover {
+    color: #111827;
+}
+
+.kindness-entry {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 0.5rem;
+}
+
+.kindness-entry .date {
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.kindness-entry .text {
+    color: #4b5563;
+}
+
+/* Make the Journal label clickable */
+.grid-labels .label.clickable {
+    cursor: pointer;
+    transition: color 0.2s ease;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 3px;
+}
+
+.grid-labels .label.clickable:hover {
+    color: #005643;
+    text-decoration-style: solid;
+}
+
+/* Add styles for picture upload */
+.picture-input {
+    margin: -0.5rem 0 1rem 2.5rem;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.picture-input.visible {
+    display: block;
+    opacity: 1;
+}
+
+.picture-input input[type="file"] {
+    display: none;
+}
+
+.upload-text {
+    padding: 0.5rem;
+    border: 1px dashed #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: #005643;
+    background-color: #f9fafb;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.upload-text:hover {
+    background-color: #f3f4f6;
+    border-color: #005643;
+}
+
+/* Add these styles for the picture gallery */
+.picture-entries {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.picture-entry {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.picture-entry .date {
+    padding: 0.5rem;
+    font-weight: 600;
+    color: #111827;
+    font-size: 0.875rem;
+    background-color: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.picture-entry img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Make the Picture label clickable */
+.grid-labels .label.picture-label {
+    cursor: pointer;
+    transition: color 0.2s ease;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 3px;
+}
+
+.grid-labels .label.picture-label:hover {
+    color: #005643;
+    text-decoration-style: solid;
+}
+
+/* Add styles for Bible input */
+.bible-input {
+    margin: -0.5rem 0 1rem 2.5rem;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.bible-input.visible {
+    display: block;
+    opacity: 1;
+}
+
+.bible-input input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: #111827;
+    background-color: #f9fafb;
+}
+
+.bible-input input:focus {
+    outline: none;
+    border-color: #005643;
+    background-color: white;
+}
+
+/* Add styles for Bible entries */
+.bible-entry {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 0.5rem;
+}
+
+.bible-entry .date {
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.bible-entry .text {
+    color: #4b5563;
+}
+
+/* Add styles for the completion modal */
+.completion-modal .modal-content {
+    margin: 30vh auto;
+    text-align: center;
+    max-width: 400px;
+    padding: 2rem;
+}
+
+.completion-modal h3 {
+    color: #005643;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.completion-modal .completion-message {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: #111827;
+}
+
+.modal-close-btn {
+    width: auto;
+    min-width: 100px;
+    margin: 0 auto;
+} 
