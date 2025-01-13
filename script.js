@@ -14,6 +14,10 @@ class HabitTracker {
         this.initializePictureModal();
         this.bibleHistory = this.loadBibleHistory();
         this.initializeBibleModal();
+        this.prayerHistory = this.loadPrayerHistory();
+        this.initializePrayerModal();
+        this.journalHistory = this.loadJournalHistory();
+        this.initializeJournalModal();
     }
 
     loadProgress() {
@@ -92,6 +96,30 @@ class HabitTracker {
                 document.getElementById('bibleText').value = '';
             }
         });
+
+        // Add Prayer checkbox handler
+        document.getElementById('pray').addEventListener('change', (e) => {
+            const prayerInput = document.querySelector('.prayer-input');
+            if (e.target.checked) {
+                prayerInput.classList.add('visible');
+                document.getElementById('prayerText').focus();
+            } else {
+                prayerInput.classList.remove('visible');
+                document.getElementById('prayerText').value = '';
+            }
+        });
+
+        // Add Journal checkbox handler
+        document.getElementById('journal').addEventListener('change', (e) => {
+            const journalInput = document.querySelector('.journal-input');
+            if (e.target.checked) {
+                journalInput.classList.add('visible');
+                document.getElementById('journalText').focus();
+            } else {
+                journalInput.classList.remove('visible');
+                document.getElementById('journalText').value = '';
+            }
+        });
     }
 
     updateUI() {
@@ -162,6 +190,20 @@ class HabitTracker {
                     this.tempImageData = null;
                 }
 
+                // Save Prayer text
+                const prayerText = document.getElementById('prayerText').value;
+                if (prayerText.trim()) {
+                    this.prayerHistory[new Date().toISOString()] = prayerText;
+                    this.savePrayerHistory();
+                }
+
+                // Save Journal text
+                const journalText = document.getElementById('journalText').value;
+                if (journalText.trim()) {
+                    this.journalHistory[new Date().toISOString()] = journalText;
+                    this.saveJournalHistory();
+                }
+
                 const dayIndex = this.currentDay - 1;
                 document.querySelectorAll('.habit-item input[type="checkbox"]').forEach((checkbox, index) => {
                     this.habitHistory[dayIndex][index] = checkbox.checked;
@@ -186,6 +228,8 @@ class HabitTracker {
                 document.getElementById('kindnessText').value = '';
                 document.getElementById('pictureFile').value = '';
                 document.querySelector('.upload-text').textContent = 'Click to upload your daily picture';
+                document.getElementById('prayerText').value = '';
+                document.getElementById('journalText').value = '';
             }
         } else {
             alert('Please complete all habits before marking the day as complete.');
@@ -361,6 +405,104 @@ class HabitTracker {
                 modal.style.display = 'none';
             }
         };
+    }
+
+    loadPrayerHistory() {
+        const savedHistory = localStorage.getItem('prayerHistory');
+        return savedHistory ? JSON.parse(savedHistory) : {};
+    }
+
+    savePrayerHistory() {
+        localStorage.setItem('prayerHistory', JSON.stringify(this.prayerHistory));
+    }
+
+    initializePrayerModal() {
+        const modal = document.getElementById('prayerModal');
+        const closeBtn = modal.querySelector('.close');
+        const prayerLabel = document.querySelector('.grid-labels .label:nth-child(2)'); // Prayer label
+        
+        prayerLabel.classList.add('clickable');
+        
+        prayerLabel.addEventListener('click', () => {
+            this.showPrayerHistory();
+            modal.style.display = 'block';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+
+    showPrayerHistory() {
+        const entriesContainer = document.getElementById('prayerEntries');
+        entriesContainer.innerHTML = '';
+        
+        Object.entries(this.prayerHistory)
+            .sort((a, b) => new Date(b[0]) - new Date(a[0]))
+            .forEach(([date, text]) => {
+                const entry = document.createElement('div');
+                entry.className = 'prayer-entry';
+                entry.innerHTML = `
+                    <div class="date">${new Date(date).toLocaleDateString()}</div>
+                    <div class="text">${text}</div>
+                `;
+                entriesContainer.appendChild(entry);
+            });
+    }
+
+    loadJournalHistory() {
+        const savedHistory = localStorage.getItem('journalHistory');
+        return savedHistory ? JSON.parse(savedHistory) : {};
+    }
+
+    saveJournalHistory() {
+        localStorage.setItem('journalHistory', JSON.stringify(this.journalHistory));
+    }
+
+    initializeJournalModal() {
+        const modal = document.getElementById('journalModal');
+        const closeBtn = modal.querySelector('.close');
+        const journalLabel = document.querySelector('.grid-labels .label:nth-child(3)'); // Journal label
+        
+        journalLabel.classList.add('clickable');
+        
+        journalLabel.addEventListener('click', () => {
+            this.showJournalHistory();
+            modal.style.display = 'block';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+
+    showJournalHistory() {
+        const entriesContainer = document.getElementById('journalEntries');
+        entriesContainer.innerHTML = '';
+        
+        Object.entries(this.journalHistory)
+            .sort((a, b) => new Date(b[0]) - new Date(a[0]))
+            .forEach(([date, text]) => {
+                const entry = document.createElement('div');
+                entry.className = 'journal-entry';
+                entry.innerHTML = `
+                    <div class="date">${new Date(date).toLocaleDateString()}</div>
+                    <div class="text">${text}</div>
+                `;
+                entriesContainer.appendChild(entry);
+            });
     }
 }
 

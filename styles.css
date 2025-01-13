@@ -547,4 +547,96 @@ button:hover {
     width: auto;
     min-width: 100px;
     margin: 0 auto;
+}
+
+/* Add styles for Prayer input */
+.prayer-input {
+    margin: -0.5rem 0 1rem 2.5rem;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.prayer-input.visible {
+    display: block;
+    opacity: 1;
+}
+
+.prayer-input input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: #111827;
+    background-color: #f9fafb;
+}
+
+.prayer-input input:focus {
+    outline: none;
+    border-color: #005643;
+    background-color: white;
+}
+
+/* Add styles for Prayer entries */
+.prayer-entry {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 0.5rem;
+}
+
+.prayer-entry .date {
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.prayer-entry .text {
+    color: #4b5563;
+}
+
+/* Add styles for Journal input */
+.journal-input {
+    margin: -0.5rem 0 1rem 2.5rem;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.journal-input.visible {
+    display: block;
+    opacity: 1;
+}
+
+.journal-input input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: #111827;
+    background-color: #f9fafb;
+}
+
+.journal-input input:focus {
+    outline: none;
+    border-color: #005643;
+    background-color: white;
+}
+
+/* Add styles for Journal entries */
+.journal-entry {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 0.5rem;
+}
+
+.journal-entry .date {
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.journal-entry .text {
+    color: #4b5563;
 } 
